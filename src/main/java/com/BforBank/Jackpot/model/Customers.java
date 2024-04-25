@@ -11,11 +11,11 @@ public class Customers {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    private String last_name;
+    private String lastname;
 
-    private String first_name;
+    private String firstname;
 
-    private double jackpot_amount;
+    private double jackpotamount;
 
-    private int nb_checkout;
+    private int nbcheckout;
 }

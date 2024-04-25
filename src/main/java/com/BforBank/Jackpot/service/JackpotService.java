@@ -13,7 +13,7 @@ public class JackpotService {
         if (customers == null){
             return false;
         }
-        if (customers.getJackpot_amount()>=10 && customers.getNb_checkout()>=3){
+        if (customers.getJackpotamount()>=10 && customers.getNbcheckout()>=3){
             return true;
         }
         return false;
