@@ -11,7 +11,9 @@ You can check if a customer's jackpot is available with :
   localhost:9000/customer/{customer_id}/isUnlocked
 
   example : 
+  
   get customer information
+  
   request : localhost:9000/customer/2
   response : {
     "id": 2,
@@ -22,7 +24,9 @@ You can check if a customer's jackpot is available with :
 }
 
 check if jackpot is available : 
+
 request : localhost:9000/customer/2/isUnlocked
+
 response : {
     "idCustomer": 2,
     "unlocked": false,
