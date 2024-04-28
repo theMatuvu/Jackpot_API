@@ -21,6 +21,10 @@ public class JackpotTests {
     private MockMvc mockMvc;
 
     @Test
+    public void URIKO() throws Exception{
+        mockMvc.perform(get("/bforbank")).andExpect(status().isNotFound());
+    }
+    @Test
     public void testGetCustomer() throws Exception{
         mockMvc.perform(get("/customer/2")).andExpect(status().isOk()).andExpect(jsonPath("lastname", is("HOCHON")));
     }
