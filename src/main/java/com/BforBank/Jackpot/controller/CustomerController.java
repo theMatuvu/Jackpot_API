@@ -1,6 +1,7 @@
 package com.BforBank.Jackpot.controller;
 
 import com.BforBank.Jackpot.model.Customers;
+import com.BforBank.Jackpot.model.Response.JackpotResponse;
 import com.BforBank.Jackpot.service.CustomersService;
 import com.BforBank.Jackpot.service.JackpotService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,17 +21,21 @@ public class CustomerController {
 
     @GetMapping("/customer/{id}")
     public Customers getCustomer(@PathVariable final long id){
-        Optional<Customers> customer = customersService.getCustomer(id);
-        if(customer.isPresent())
-            return customer.get();
-        else
-            return null;
+        return customersService.getCustomer(id);
     }
 
     @GetMapping("/customer/{id}/isUnlocked")
-    public boolean isJackpotUnlocked(@PathVariable final long id){
+    public JackpotResponse isJackpotUnlocked(@PathVariable final long id){
         Customers customer = getCustomer(id);
-        return jackpotService.isJackpotAvailable(customer);
-
+        StringBuilder message = new StringBuilder();
+        if(!jackpotService.isJackpotAvailable(customer)) {
+            if(customer.getJackpotamount() < jackpotService.getMinAmount())
+                message.append("The amount of your jackpot is too low. ");
+            if(customer.getNbcheckout() < jackpotService.getMinCheckout())
+                message.append("Your number of checkouts is insufficient.");
+        }
+        else
+            message.append("Jackpot unlocked");
+        return new JackpotResponse(id,jackpotService.isJackpotAvailable(customer), customer.getJackpotamount(), customer.getNbcheckout(), message.toString());
     }
 }

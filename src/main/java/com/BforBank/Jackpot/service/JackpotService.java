@@ -8,12 +8,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class JackpotService {
     private CustomersService customersService;
+    private final double minAmount = 10.;
+    private final int minCheckout = 3;
 
     public boolean isJackpotAvailable(Customers customers){
         if (customers == null){
             return false;
         }
-        if (customers.getJackpotamount()>=10 && customers.getNbcheckout()>=3){
+        if (customers.getJackpotamount()>=minAmount && customers.getNbcheckout()>=minCheckout){
             return true;
         }
         return false;
