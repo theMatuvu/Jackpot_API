@@ -1,4 +1,4 @@
-API for a loyalty jackpot !
+###API for a loyalty jackpot !###
 
 You can request API with Postman when the application is running on port 9000.
 A Datapool with 4 customers is already available for test the application.
