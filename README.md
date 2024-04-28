@@ -2,7 +2,8 @@ API for a loyalty jackpot !
 
 You can request API with Postman when the application is running on port 9000.
 A Datapool with 4 customers is already available for test the application.
-A test set is also available
+You can make request for user id from 1 to 4.
+A test set is also available.
 
 You can get customer information with :
   localhost:9000/customer/{customer_id}
